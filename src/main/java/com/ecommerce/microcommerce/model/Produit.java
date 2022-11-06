@@ -4,7 +4,6 @@ public class Produit {
 	private int id;
 	private String nom;
 	private int prix;
-	
 	public Produit() {
 		super();
 	}

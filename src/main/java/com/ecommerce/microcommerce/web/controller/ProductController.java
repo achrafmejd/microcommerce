@@ -3,11 +3,7 @@ package com.ecommerce.microcommerce.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ecommerce.microcommerce.dao.ProduitDao;
 import com.ecommerce.microcommerce.dao.ProduitDaoImp;
@@ -33,5 +29,14 @@ public class ProductController {
 	public Produit afficherUnProduit(@PathVariable int id) {
 		return produitDao.findById(id);
 	}
-	
+
+	@DeleteMapping(value="/produits/{id}")
+	public Produit supprimerProduit(@PathVariable int id) {
+		return produitDao.deleteById(id);
+	}
+
+	@PutMapping(value="/produits")
+	public Produit updateProduit(@RequestBody Produit new_produit){
+		return produitDao.updateById(new_produit);
+	}
 }

@@ -34,6 +34,30 @@ public class ProduitDaoImp implements ProduitDao{
 	}
 
 	@Override
+	public Produit deleteById(int id) {
+		for(Produit p : produits){
+			if(p.getId() == id){
+				produits.remove(produits.indexOf(p));
+				return p;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Produit updateById(Produit new_produit) {
+		for(Produit p : produits){
+			if(p.getId() == new_produit.getId()) {
+				p.setPrix(new_produit.getPrix());
+				p.setNom(new_produit.getNom());
+				return p;
+			}
+		}
+		return null;
+	}
+
+
+	@Override
 	public Produit save(Produit produit) {
 		produits.add(produit);
 		return produit;
